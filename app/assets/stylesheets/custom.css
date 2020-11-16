@@ -14,7 +14,7 @@ body {
 
 img {
     height: 110px;
-    width: 140px;
+    width: 180px;
     max-width: 100%;
 }
 
@@ -179,5 +179,9 @@ img {
         opacity: 1;
         -webkit-transform: scale(1);
         transform: scale(1); } }
+
+.list-item-title {
+    margin-top: 44px;
+}
 
 /*# sourceMappingURL=style.css.map */
