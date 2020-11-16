@@ -1,46 +1,52 @@
+# Marley Spoon Web Challenge
 
-**Branch Management**
+Simple Ruby on Rails Application which fetches Contentful data.
 
-**_Creating a new branch_**
+## Prerequisite
+A system with Ruby and Rails installed
 
-* Always create new branch from `development` branch
-* Example:
+## Setup
+* Clone the project
 
-`git checkout development`
+```bash
+git clone project_link
+```
 
-`git pull origin development`
+* Install bundler
 
-`git checkout -b new_branch`
+```bash
+gem install bundler
+```
 
+* Install dependencies
 
-**Deploy a branch to the dev server**
-* Merge your new branch with `master` branch
-* Example:
-
-`git checkout master`
-
-`git pull origin master`
-
-`git merge new_branch`
-
-`git push origin master`
+```bash
+bundle install
+```
 
 
-**Deploy a branch to the production server**
-* Merge your new branch with `development` branch
-* Then merge `development` branch with `production` branch
-* Example:
+* Run Server
 
-`git checkout development`
+```bash
+bundle exec rails s
+```
 
-`git pull origin development`
+## Viewing Data
 
-`git merge new_branch`
+Click on the url that has been provided on the console (default http://localhost:3000
+). Here all the recipes are listed down. 
+Click on a recipe, and it will take you to the details page of the recipe. 
 
-`git checkout productionn`
+### Branches and Environments
+We have three branches here development, staging and production. 
+Development branch will be used for development environment branch, where developers
+will merge their code from local branch and then deploy to development environment to 
+test.
 
-`git pull origin productionn`
 
-`git merge development`
+Staging environment will be used by Quality Assurance team. Once after
+ developers are done with their development and testing on development environment 
+ they will merge changes on staging branch which will be deployed to staging environment. 
 
-`git push origin productionn`
+
+Production branch will be used as a final release branch. 
