@@ -1,0 +1,31 @@
+<% recipes = contentful.entries(content_type: 'recipe', include: 1) %>
+
+<div class="container py-5">
+  <div class="row text-center text-white mb-5">
+    <div class="col-lg-7 mx-auto">
+      <h1 class="display-4">Recipe List</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <!-- List group-->
+      <ul class="list-group shadow">
+        <% recipes.each do |entry| %>
+          <%= link_to recipe_path(entry.id) do %>
+            <li class="list-group-item">
+              <!-- Custom content-->
+              <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+                <span class="col-md-7 recipe-details media-body order-2 order-lg-1">
+                  <h5 class="mt-0 font-weight-bold mb-2"><%= entry.title %></h5>
+                  <p class="font-italic text-muted mb-0 small"><%= entry.description %></p>
+                </span>
+                <span><img src="https:<%= entry.photo.url %>" width="200" class="ml-lg-5 order-1 order-lg-2"></span>
+              </div>
+            </li>
+          <% end %>
+          <br/>
+        <%end %>
+      </ul>
+    </div>
+  </div>
+</div>
