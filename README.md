@@ -21,11 +21,11 @@ While clicking on a list item, the controller's 'show' method will handle the ac
  method which is responsible for fetching the details of that specific entry using its 'id'.
   
 We have an environment.yml file which holds all the environment variable. I have added environment variable values on 
-'development' branch. P feel free to add on other branches or change any if you need.   
+'development' branch. Please feel free to add on other branches or change any if you need.   
 
 ## Branches and Environments
 We have three branches here development, staging and production. 
- Development branch will be used for development environment branch, where developers
+ Development branch will be used for development environment branch also the base branch for this project, where developers
  will merge their code from local branch and then deploy to development environment to 
  test.
  
