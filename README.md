@@ -3,17 +3,30 @@
 Simple Ruby on Rails Application which fetches Contentful entries and display it.
 
 ## Description
-The project is developed based on the requirement given by Marley Spoon. 
-The landing page of the project will list down all the recipers of Merley Spoon from environment master. List page containsr recipe title and picture.
-Each item of the link is clickable. Clicking on each of the link will take you to the details page of the recipe. Details page shows recipe title, image, list of tags joined by separating by commas (,), description and Chef name (if available).
 
+
+The project is developed based on the [requirement](https://gist.github.com/lawitschka/063f2e28bd6993cac5f8b40b991ae899) given by Marley Spoon. 
+The landing page of the project will list down all the recipes of Marley Spoon from environment 'master'. List page
+ contains recipe title and picture.
+Each item of the link is clickable. Clicking on each of the link will take you to the details page of the recipe.
+Details page shows recipe title, image, list of tags joined by separating by commas (,), description and Chef name
+  (if available).
+
+
+Here we have a controller (RecipeController) which controls all incoming action.
+We have a Service layer (ContentfulClient) which handles external call to fetch data from Contentful (Content Delivery API). 
+For root directory (listing all entries / recipes) 'index' method takes action. index method calls the service
+ (ContentfulClient) which fetches all Contentful entries.
+While clicking on a list item, the controller's 'show' method will handle the action. Show method will call the service 
+ method which is responsible for fetching the details of that specific entry using its 'id'.
+  
 
 ## Branches and Environments
 We have three branches here development, staging and production. 
-Development branch will be used for development environment branch, where developers
-will merge their code from local branch and then deploy to development environment to 
-test.
-
+ Development branch will be used for development environment branch, where developers
+ will merge their code from local branch and then deploy to development environment to 
+ test.
+ 
 
 Staging environment will be used by Quality Assurance team. Once after
  developers are done with their development and testing on development environment 
@@ -49,7 +62,7 @@ bundle install
 * Run Server
 
 ```bash
-bundle exec rails s
+rails s
 ```
 
 ## Viewing Data
