@@ -8,7 +8,6 @@
     <div class="col-lg-8 mx-auto">
       <!-- List group-->
       <ul class="list-group shadow">
-        <%# cache('recipe', @recipes) %>
         <% @recipes.each do |entry| %>
           <%= link_to recipe_path(entry.id) do %>
             <li class="list-group-item">
