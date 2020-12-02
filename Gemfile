@@ -35,6 +35,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use contentful
 gem 'contentful'
+gem 'contentful_model'
+gem 'contentful_rails'
 
 # Bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'

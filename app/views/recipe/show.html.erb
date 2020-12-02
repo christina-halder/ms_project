@@ -16,7 +16,7 @@
           <h3 class="product-title"><%= @recipe.title %></h3>
 
           <!-- Show description -->
-          <p class="product-description"><%= @recipe.description %></p>
+          <p class="product-description"><%= parse_markdown(@recipe.description) %></p>
 
           <!-- Show Chef name  -->
           <h5 class="colors">Chef Name: <%= @recipe.fields[:chef].present? ? @recipe.chef.name : 'N/A' %></h5>
