@@ -97,6 +97,18 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.6)
+    kaminari (1.2.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.1)
+      kaminari-activerecord (= 1.2.1)
+      kaminari-core (= 1.2.1)
+    kaminari-actionview (1.2.1)
+      actionview
+      kaminari-core (= 1.2.1)
+    kaminari-activerecord (1.2.1)
+      activerecord
+      kaminari-core (= 1.2.1)
+    kaminari-core (1.2.1)
     loofah (2.7.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -183,6 +195,7 @@ GEM
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    will_paginate (3.1.5)
 
 PLATFORMS
   ruby
@@ -194,12 +207,14 @@ DEPENDENCIES
   contentful_rails
   jbuilder
   jquery-rails
+  kaminari
   rails
   sdoc (~> 0.4.0)
   spring
   sqlite3
   turbolinks
   web-console (~> 2.0)
+  will_paginate
 
 BUNDLED WITH
    2.1.4
