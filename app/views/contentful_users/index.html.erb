@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Contentful Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Space</th>
+      <th>Access token</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contentful_users.each do |contentful_user| %>
+      <tr>
+        <td><%= contentful_user.name %></td>
+        <td><%= contentful_user.space_id %></td>
+        <td><%= contentful_user.access_token %></td>
+        <td><%= link_to 'Show', contentful_user %></td>
+        <td><%= link_to 'Edit', edit_contentful_user_path(contentful_user) %></td>
+        <td><%= link_to 'Destroy', contentful_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Contentful User', new_contentful_user_path %>
