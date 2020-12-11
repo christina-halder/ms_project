@@ -7,22 +7,22 @@
         <div class="col-md-6">
           <div class="tab-content">
             <!-- Show image -->
-            <div class="tab-pane active details-image" id="pic-1"><img src="https:<%= @recipe.photo.url %>" height="300"/></div>
+            <div class="tab-pane active details-image" id="pic-1"><img src="<%= @details[:photo] %>" height="300"/></div>
           </div>
         </div>
 
         <div class="details col-md-6">
           <!-- Show image -->
-          <h3 class="product-title"><%= @recipe.title %></h3>
+          <h3 class="product-title"><%= @details[:title] %></h3>
 
           <!-- Show description -->
-          <p class="product-description"><%= @recipe.description %></p>
+          <p class="product-description"><%= parse_markdown(@details[:description]) %></p>
 
           <!-- Show Chef name  -->
-          <h5 class="colors">Chef Name: <%= @recipe.fields[:chef].present? ? @recipe.chef.name : 'N/A' %></h5>
+          <h5 class="colors">Chef Name: <%= @details[:chef] %></h5>
 
           <!-- Show Tags merging them together separating by comma (,)  -->
-          <h5 class="colors"> Tags: <small><%= @recipe.fields[:tags].present? ? @recipe.tags.map(&:name).join(', ') : 'No tags found' %></small> </h5>
+          <h5 class="colors"> Tags: <small><%= @details[:tags] %></small> </h5>
         </div>
       </div>
     </div>

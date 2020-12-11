@@ -1,6 +1,9 @@
 # Marley Spoon Web Challenge
+This is Simple Rails and Contentful Application.
+This application is for fetching Contentful data from Marley Spoon APIs.
 
-Simple Ruby on Rails Application which fetches Contentful entries and display it.
+[Contentful](https://www.contentful.com) provides a content infrastructure for digital teams to power content in websites, apps, and devices. Unlike a CMS, Contentful was built to integrate with the modern software stack. It offers a central hub for structured content, powerful management and delivery APIs, and a customizable web app that enable developers and content creators to ship digital products faster.
+
 
 ## Description
 
@@ -12,16 +15,6 @@ Each item of the link is clickable. Clicking on each of the link will take you t
 Details page shows recipe title, image, list of tags joined by separating by commas (,), description and Chef name
   (if available).
 
-
-Here we have a controller (RecipeController) which controls all incoming action.
-We have a Service layer (ContentfulClient) which handles external call to fetch data from Contentful (Content Delivery API). 
-For root directory (listing all entries / recipes) 'index' method takes action. index method calls the service
- (ContentfulClient) which fetches all Contentful entries.
-While clicking on a list item, the controller's 'show' method will handle the action. Show method will call the service 
- method which is responsible for fetching the details of that specific entry using its 'id'.
-  
-We have an environment.yml file which holds all the environment variable. I have added environment variable values on 
-'development' branch. Please feel free to add on other branches or change any if you need.   
 
 ## Branches and Environments
 We have three branches here development, staging and production. 
@@ -39,14 +32,25 @@ Production branch will be used as a final release branch.
 
 
 ## Prerequisite
-A system with Ruby and Rails installed
+A system with Ruby (2.3.0) and Rails installed
+
 
 ## Setup
 * Clone the project
 
-```bash
-git clone project_link
+#### Clone the repository
+
+```ruby
+git clone https://github.com/christina-halder/ms_project.git
 ```
+
+#### Navigate into the repository's directory
+
+```bash
+cd ms_project
+```
+
+#### Install dependencies
 
 * Install bundler
 
@@ -60,11 +64,16 @@ gem install bundler
 bundle install
 ```
 
-
-* Run Server
+#### Create and Seed Database
 
 ```bash
-rails s
+bundle exec rake db:create db:migrate db:seed
+```
+
+#### Run the Server
+
+```bash
+bundle exec rails s
 ```
 
 ## Viewing Data
@@ -75,3 +84,11 @@ Click on a recipe, and it will take you to the details page of the recipe.
 
 Happy browsing :)
 
+## Tests
+
+Run RSpec tests by
+
+```bash
+rake db:setup
+bundle exec rspec
+```
