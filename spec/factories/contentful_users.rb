@@ -8,5 +8,12 @@ FactoryBot.define do
       environment_id { 'dummy-environment' }
     end
 
+  trait :marley_spoon do
+      name { 'Marley Spoon' }
+      space_id { 'dummy-id' }
+      access_token { 'dummy-token' }
+      environment_id { 'dummy-environment' }
+    end
+
   end
 end
