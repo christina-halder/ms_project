@@ -48,6 +48,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug'
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -59,6 +60,9 @@ group :development do
 end
 
 group :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  # gem 'byebug'
+  gem 'shoulda-matchers'
+  gem 'vcr'
+  gem 'webmock'
+  gem 'database_cleaner'
+  gem 'rails-controller-testing'
 end

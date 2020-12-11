@@ -5,6 +5,9 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
+require 'vcr'
+require 'webmock/rspec'
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -54,4 +57,32 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  ActiveRecord::Migration.maintain_test_schema!
+
+  config.include FactoryBot::Syntax::Methods
+
+  Shoulda::Matchers.configure do |c|
+    c.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
+  end
+
+  VCR.configure do |config|
+    config.allow_http_connections_when_no_cassette = true
+    config.hook_into :webmock
+    config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+    config.preserve_exact_body_bytes { false }
+    config.configure_rspec_metadata!
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
 end

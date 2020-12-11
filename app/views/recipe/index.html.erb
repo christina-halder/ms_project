@@ -4,27 +4,31 @@
       <h1 class="display-4">List of Recipes</h1>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-8 mx-auto">
-      <!-- List group-->
-      <ul class="list-group shadow">
-        <% @recipes.each do |entry| %>
-          <%= link_to recipe_path(entry.id) do %>
-            <li class="list-group-item">
-              <!-- Custom content-->
-              <div class="media align-items-lg-center flex-column flex-lg-row p-3">
-                <span class="col-md-9 recipe-details media-body order-2 order-lg-1">
-                  <h4 class="font-weight-bold list-item-title"><%= entry.title %></h4>
-                </span>
-                <span><img src="https:<%= entry.photo.url %>" class="ml-lg-5 order-1 order-lg-2"></span>
-              </div>
-            </li>
-          <% end %>
-          <br/>
+  <% if @recipes %>
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <!-- List group-->
+        <ul class="list-group shadow">
+          <% @recipes.each do |entry| %>
+            <%= link_to recipe_path(entry[:id]) do %>
+              <li class="list-group-item">
+                <!-- Custom content-->
+                <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+                  <span class="col-md-9 recipe-details media-body order-2 order-lg-1">
+                    <h4 class="font-weight-bold list-item-title"><%= entry[:title] %></h4>
+                  </span>
+                  <span><img src="<%= entry[:photo] %>" class="ml-lg-5 order-1 order-lg-2"></span>
+                </div>
+              </li>
+            <% end %>
+            <br/>
 
-        <%end %>
-        <%= will_paginate @recipes_paginate %>
-      </ul>
+          <%end %>
+          <%= will_paginate @recipes_paginate %>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% else %>
+    Something Went Wrong. Please try again.
+  <% end %>
 </div>
