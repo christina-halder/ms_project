@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @contentful_user.name %>
+</p>
+
+<p>
+  <strong>Space:</strong>
+  <%= @contentful_user.space_id %>
+</p>
+
+<p>
+  <strong>Access token:</strong>
+  <%= @contentful_user.access_token %>
+</p>
+
+<%= link_to 'Edit', edit_contentful_user_path(@contentful_user) %> |
+<%= link_to 'Back', contentful_users_path %>
