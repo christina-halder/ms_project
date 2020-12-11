@@ -10,22 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_09_192632) do
+ActiveRecord::Schema.define(version: 0) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "contentful_users", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "space_id", null: false
-    t.string "access_token", null: false
-    t.string "environment_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["access_token"], name: "index_contentful_users_on_access_token", unique: true
-    t.index ["environment_id"], name: "index_contentful_users_on_environment_id", unique: true
-    t.index ["name"], name: "index_contentful_users_on_name", unique: true
-    t.index ["space_id"], name: "index_contentful_users_on_space_id", unique: true
-  end
 
 end

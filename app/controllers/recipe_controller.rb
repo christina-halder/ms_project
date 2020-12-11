@@ -8,11 +8,10 @@ class RecipeController < ApplicationController
   def index
     #  This method renders all the contentful entries of type 'recipe' and show as list.
 
-    # page_count = (params[:page].to_i > 0) ? params[:page].to_i : 1
     recipes = Recipe.paginate(page = page_count, per_page = PER_PAGE, order_field = 'sys.updatedAt').load
     @recipes = recipes.map { |recipe| recipe.normalize }
-    @recipes_paginate = WillPaginate::Collection.create(page_count, PER_PAGE, @recipes.length) do |p|
-      p.replace(@recipes.to_a)
+    @recipes_paginate = WillPaginate::Collection.create(page_count, PER_PAGE, recipes.total) do |p|
+      p.replace(@recipes)
     end
 
   rescue => error
@@ -27,7 +26,6 @@ class RecipeController < ApplicationController
     #     "id"=>"4dT8tcb6ukGSIg2YyuGEOm"
     # }
 
-    # @recipe = ContentfulClient.new.entry(params[:id])
     recipe_details = Recipe.find(params[:id])
     @details = recipe_details.normalize
 
