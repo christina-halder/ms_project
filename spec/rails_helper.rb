@@ -6,7 +6,7 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require 'shoulda-matchers'
-require 'vcr'
+require 'vcr_setup'
 require 'webmock/rspec'
 
 # Add additional requires below this line. Rails is not loaded until this point!
@@ -28,7 +28,15 @@ require 'webmock/rspec'
 
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
-ActiveRecord::Migration.maintain_test_schema!
+
+# Checks for pending migrations and applies them before tests are run.
+# If you are not using ActiveRecord, you can remove these lines.
+begin
+  ActiveRecord::Migration.maintain_test_schema!
+rescue ActiveRecord::PendingMigrationError => e
+  puts e.to_s.strip
+  exit 1
+end
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -68,14 +76,6 @@ RSpec.configure do |config|
       with.test_framework :rspec
       with.library :rails
     end
-  end
-
-  VCR.configure do |config|
-    config.allow_http_connections_when_no_cassette = true
-    config.hook_into :webmock
-    config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
-    config.preserve_exact_body_bytes { false }
-    config.configure_rspec_metadata!
   end
 
   config.before(:all) do
